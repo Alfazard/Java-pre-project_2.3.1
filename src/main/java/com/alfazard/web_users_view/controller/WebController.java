@@ -1,7 +1,7 @@
 package com.alfazard.web_users_view.controller;
 
 import com.alfazard.web_users_view.model.User;
-import com.alfazard.web_users_view.service.ServiceUser;
+import com.alfazard.web_users_view.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class WebController {
-    private final ServiceUser userService;
+    private final UserService userService;
 
-    public WebController(ServiceUser userService) {
+    public WebController(UserService userService) {
         this.userService = userService;
     }
 
@@ -37,8 +37,7 @@ public class WebController {
     }
     @GetMapping("/edit")
     public String edit(@RequestParam("id") int id, Model model) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
+        model.addAttribute("user", userService.getUser(id));
         return "edit";
     }
     @PatchMapping("edit")

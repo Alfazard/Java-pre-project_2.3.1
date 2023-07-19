@@ -25,7 +25,6 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories
 @ComponentScan("com.alfazard.web_users_view")
-
 public class HibernateConfiguration {
 
     private final Environment env;

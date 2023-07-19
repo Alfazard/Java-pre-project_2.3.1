@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Alfazard on 08.07.2023
  */
-public interface ServiceUser {
+public interface UserService {
     List<User> getAllUsers();
     void addUser(User user);
 

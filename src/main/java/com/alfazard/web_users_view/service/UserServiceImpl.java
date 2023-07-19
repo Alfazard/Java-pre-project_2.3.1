@@ -12,34 +12,31 @@ import java.util.List;
  * @author Alfazard on 08.07.2023
  */
 @Service
-public class ServiceUserImpl implements ServiceUser {
+public class UserServiceImpl implements UserService {
 
     private final DaoUser daoUser;
 
-    public ServiceUserImpl(DaoUser daoUser) {
+    public UserServiceImpl(DaoUser daoUser) {
         this.daoUser = daoUser;
     }
 
     @Override
-    @Transactional
     public List<User> getAllUsers() {
         return daoUser.getAllUsers();
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor=Exception.class)
     public void addUser(User user) {
         daoUser.addUser(user);
     }
 
     @Override
-    @Transactional
     public User getUser(int id) {
         return daoUser.getUser(id);
     }
 
     @Override
-    @Transactional
     public void deleteUser(int id) {
         daoUser.deleteUser(id);
     }
